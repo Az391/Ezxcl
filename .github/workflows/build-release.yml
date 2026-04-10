@@ -1,0 +1,54 @@
+name: Build and Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: windows-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: '9.0.x'
+        
+    - name: Restore dependencies
+      run: dotnet restore Ezcel.sln
+      
+    - name: Build
+      run: dotnet build Ezcel.sln --configuration Release --no-restore
+      
+    - name: Create release package
+      run: |
+        mkdir -p release
+        Copy-Item -Path "src/Ezcel.AddIn/bin/Release/net9.0-windows/*" -Destination "release/" -Recurse
+        Copy-Item -Path "appsettings.json" -Destination "release/"
+        Copy-Item -Path "README.md" -Destination "release/"
+        Copy-Item -Path "INSTALL.md" -Destination "release/"
+        Copy-Item -Path "LICENSE" -Destination "release/"
+        
+    - name: Upload artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: Ezcel-AddIn
+        path: release/
+        
+    - name: Create ZIP archive
+      run: |
+        Compress-Archive -Path "release/*" -DestinationPath "Ezcel-v${{ github.ref_name }}.zip"
+        
+    - name: Release
+      uses: softprops/action-gh-release@v1
+      if: startsWith(github.ref, 'refs/tags/')
+      with:
+        files: Ezcel-v${{ github.ref_name }}.zip
+        generate_release_notes: true
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
