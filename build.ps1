@@ -54,14 +54,24 @@ if ($CreateZip) {
     
     # 复制构建输出
     $buildOutput = "src\Ezcel.AddIn\bin\$Configuration\net9.0-windows"
-    Copy-Item -Path "$buildOutput\*" -Destination $releaseDir -Recurse
+    if (Test-Path $buildOutput) {
+        Copy-Item -Path "$buildOutput\*" -Destination $releaseDir -Recurse
+        Write-Host "✓ 复制构建输出" -ForegroundColor Green
+    } else {
+        Write-Host "✗ 构建输出目录不存在: $buildOutput" -ForegroundColor Red
+        exit 1
+    }
     
     # 复制文档和配置
-    Copy-Item -Path "appsettings.json" -Destination $releaseDir
-    Copy-Item -Path "README.md" -Destination $releaseDir
-    Copy-Item -Path "INSTALL.md" -Destination $releaseDir
-    Copy-Item -Path "LICENSE" -Destination $releaseDir
-    Copy-Item -Path "install.ps1" -Destination $releaseDir
+    $files = @("appsettings.json", "README.md", "INSTALL.md", "LICENSE", "install.ps1")
+    foreach ($file in $files) {
+        if (Test-Path $file) {
+            Copy-Item -Path $file -Destination $releaseDir
+            Write-Host "✓ 复制 $file" -ForegroundColor Green
+        } else {
+            Write-Host "⚠ 未找到文件: $file" -ForegroundColor Yellow
+        }
+    }
     
     # 创建 ZIP 包
     $version = "1.0.0"

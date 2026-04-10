@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DnaLibrary Name="Ezcel AddIn" RuntimeVersion="v4.0" xmlns="http://schemas.excel-dna.net/addin/2018/08">
+  <ExternalLibrary Path="Ezcel.AddIn.dll" ExplicitExports="false" />
+  <Reference Name="System.Windows.Forms" />
+  <CustomUI>
+    <Ribbon>
+      <Tab id="EzcelTab" label="Ezcel AI">
+        <Group id="EzcelGroup" label="AI 配置">
+          <Button id="SettingsButton" label="模型配置" size="large" onAction="OnSettings" />
+          <Button id="AboutButton" label="关于" onAction="OnAbout" />
+        </Group>
+      </Tab>
+    </Ribbon>
+  </CustomUI>
+</DnaLibrary>

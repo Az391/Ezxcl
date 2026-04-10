@@ -28,12 +28,24 @@ jobs:
     - name: Create release package
       run: |
         mkdir -p release
-        Copy-Item -Path "src/Ezcel.AddIn/bin/Release/net9.0-windows/*" -Destination "release/" -Recurse
-        Copy-Item -Path "appsettings.json" -Destination "release/"
-        Copy-Item -Path "README.md" -Destination "release/"
-        Copy-Item -Path "INSTALL.md" -Destination "release/"
-        Copy-Item -Path "LICENSE" -Destination "release/"
-        Copy-Item -Path "install.ps1" -Destination "release/"
+        # 检查构建输出目录是否存在
+        if (Test-Path "src/Ezcel.AddIn/bin/Release/net9.0-windows") {
+            Copy-Item -Path "src/Ezcel.AddIn/bin/Release/net9.0-windows/*" -Destination "release/" -Recurse
+        } else {
+            Write-Host "构建输出目录不存在，检查构建步骤"
+            exit 1
+        }
+        
+        # 复制配置和文档文件
+        $files = @("appsettings.json", "README.md", "INSTALL.md", "LICENSE", "install.ps1")
+        foreach ($file in $files) {
+            if (Test-Path $file) {
+                Copy-Item -Path $file -Destination "release/"
+                Write-Host "已复制 $file"
+            } else {
+                Write-Host "警告：$file 不存在"
+            }
+        }
         
     - name: Upload artifact
       uses: actions/upload-artifact@v4
