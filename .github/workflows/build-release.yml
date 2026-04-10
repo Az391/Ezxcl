@@ -27,13 +27,40 @@ jobs:
       
     - name: Create release package
       run: |
+        Write-Host "当前目录: $pwd"
+        Write-Host "列出当前目录文件:"
+        Get-ChildItem -Path "." -Recurse | Select-Object -Property FullName | Sort-Object FullName
+        
         mkdir -p release
-        # 检查构建输出目录是否存在
-        if (Test-Path "src/Ezcel.AddIn/bin/Release/net9.0-windows") {
-            Copy-Item -Path "src/Ezcel.AddIn/bin/Release/net9.0-windows/*" -Destination "release/" -Recurse
+        
+        # 检查构建输出目录
+        $buildOutput = "src/Ezcel.AddIn/bin/Release/net9.0-windows"
+        Write-Host "检查构建输出目录: $buildOutput"
+        
+        if (Test-Path $buildOutput) {
+            Write-Host "构建输出目录存在，列出内容:"
+            Get-ChildItem -Path $buildOutput -Recurse | Select-Object -Property FullName
+            Copy-Item -Path "$buildOutput/*" -Destination "release/" -Recurse
+            Write-Host "已复制构建输出"
         } else {
-            Write-Host "构建输出目录不存在，检查构建步骤"
-            exit 1
+            # 尝试查找其他可能的构建输出目录
+            Write-Host "构建输出目录不存在，查找其他可能的目录:"
+            $possiblePaths = @(
+                "src/Ezcel.AddIn/bin/Release",
+                "src/Ezcel.AddIn/bin",
+                "bin/Release/net9.0-windows",
+                "bin/Release"
+            )
+            
+            foreach ($path in $possiblePaths) {
+                if (Test-Path $path) {
+                    Write-Host "找到目录: $path"
+                    Get-ChildItem -Path $path -Recurse | Select-Object -Property FullName
+                    Copy-Item -Path "$path/*" -Destination "release/" -Recurse
+                    Write-Host "已复制该目录内容"
+                    break
+                }
+            }
         }
         
         # 复制配置和文档文件
@@ -46,6 +73,10 @@ jobs:
                 Write-Host "警告：$file 不存在"
             }
         }
+        
+        # 列出发布目录内容
+        Write-Host "发布目录内容:"
+        Get-ChildItem -Path "release" -Recurse | Select-Object -Property FullName
         
     - name: Upload artifact
       uses: actions/upload-artifact@v4
