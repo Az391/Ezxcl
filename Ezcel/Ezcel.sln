@@ -1,0 +1,47 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32002.261
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ezcel.AddIn", "src\Ezcel.AddIn\Ezcel.AddIn.csproj", "{1A2B3C4D-5E6F-7G8H-9I0J-KL1M2N3O4P5Q}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ezcel.Engine", "src\Ezcel.Engine\Ezcel.Engine.csproj", "{2B3C4D5E-6F7G-8H9I-0J1K-LM2N3O4P5Q6R}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ezcel.Prompt", "src\Ezcel.Prompt\Ezcel.Prompt.csproj", "{3C4D5E6F-7G8H-9I0J-1K2L-MN3O4P5Q6R7S}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ezcel.Pipeline", "src\Ezcel.Pipeline\Ezcel.Pipeline.csproj", "{4D5E6F7G-8H9I-0J1K-2L3M-NO4P5Q6R7S8T}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ezcel.Providers", "src\Ezcel.Providers\Ezcel.Providers.csproj", "{5E6F7G8H-9I0J-1K2L-3M4N-OP5Q6R7S8T9U}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ezcel.Configuration", "src\Ezcel.Configuration\Ezcel.Configuration.csproj", "{6F7G8H9I-0J1K-2L3M-4N5O-PQ6R7S8T9U0V}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ezcel.Tools", "src\Ezcel.Tools\Ezcel.Tools.csproj", "{7G8H9I0J-1K2L-3M4N-5O6P-QR7S8T9U0V1W}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ezcel.Cache", "src\Ezcel.Cache\Ezcel.Cache.csproj", "{8H9I0J1K-2L3M-4N5O-6P7Q-RS8T9U0V1W2X}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1A2B3C4D-5E6F-7G8H-9I0J-KL1M2N3O4P5Q}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1A2B3C4D-5E6F-7G8H-9I0J-KL1M2N3O4P5Q}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2B3C4D5E-6F7G-8H9I-0J1K-LM2N3O4P5Q6R}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2B3C4D5E-6F7G-8H9I-0J1K-LM2N3O4P5Q6R}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3C4D5E6F-7G8H-9I0J-1K2L-MN3O4P5Q6R7S}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3C4D5E6F-7G8H-9I0J-1K2L-MN3O4P5Q6R7S}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4D5E6F7G-8H9I-0J1K-2L3M-NO4P5Q6R7S8T}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4D5E6F7G-8H9I-0J1K-2L3M-NO4P5Q6R7S8T}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5E6F7G8H-9I0J-1K2L-3M4N-OP5Q6R7S8T9U}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5E6F7G8H-9I0J-1K2L-3M4N-OP5Q6R7S8T9U}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6F7G8H9I-0J1K-2L3M-4N5O-PQ6R7S8T9U0V}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6F7G8H9I-0J1K-2L3M-4N5O-PQ6R7S8T9U0V}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7G8H9I0J-1K2L-3M4N-5O6P-QR7S8T9U0V1W}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7G8H9I0J-1K2L-3M4N-5O6P-QR7S8T9U0V1W}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8H9I0J1K-2L3M-4N5O-6P7Q-RS8T9U0V1W2X}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8H9I0J1K-2L3M-4N5O-6P7Q-RS8T9U0V1W2X}.Release|Any CPU.ActiveCfg = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
