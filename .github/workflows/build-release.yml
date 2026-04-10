@@ -33,6 +33,7 @@ jobs:
         Copy-Item -Path "README.md" -Destination "release/"
         Copy-Item -Path "INSTALL.md" -Destination "release/"
         Copy-Item -Path "LICENSE" -Destination "release/"
+        Copy-Item -Path "install.ps1" -Destination "release/"
         
     - name: Upload artifact
       uses: actions/upload-artifact@v4

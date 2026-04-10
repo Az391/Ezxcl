@@ -61,6 +61,7 @@ if ($CreateZip) {
     Copy-Item -Path "README.md" -Destination $releaseDir
     Copy-Item -Path "INSTALL.md" -Destination $releaseDir
     Copy-Item -Path "LICENSE" -Destination $releaseDir
+    Copy-Item -Path "install.ps1" -Destination $releaseDir
     
     # 创建 ZIP 包
     $version = "1.0.0"
