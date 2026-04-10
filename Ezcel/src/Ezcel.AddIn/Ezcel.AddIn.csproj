@@ -1,0 +1,29 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net9.0-windows</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <UseWindowsForms>true</UseWindowsForms>
+  </PropertyGroup>
+  
+  <ItemGroup>
+    <PackageReference Include="Excel-DNA" Version="1.7.0" />
+    <PackageReference Include="Excel-DNA.Integration" Version="1.7.0" />
+    <PackageReference Include="Excel-DNA.Interop" Version="1.7.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="9.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging" Version="9.0.0" />
+    <PackageReference Include="Serilog" Version="4.0.0" />
+    <PackageReference Include="Serilog.Sinks.File" Version="5.0.0" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <ProjectReference Include="..\Ezcel.Engine\Ezcel.Engine.csproj" />
+    <ProjectReference Include="..\Ezcel.Configuration\Ezcel.Configuration.csproj" />
+  </ItemGroup>
+  
+  <PropertyGroup>
+    <ExcelAddInName>Ezcel</ExcelAddInName>
+    <ExcelAddInDescription>Excel AI 插件，支持自定义模型接入</ExcelAddInDescription>
+    <ExcelAddInVersion>1.0.0</ExcelAddInVersion>
+  </PropertyGroup>
+</Project>
