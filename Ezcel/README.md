@@ -1,36 +1,6 @@
 # Ezcel - Excel AI 插件
 
-<p align="center">
-  <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Excel%20AI%20plugin%20interface%20with%20AI%20functions%20in%20Excel%20ribbon%2C%20modern%20professional%20UI%2C%20blue%20theme&image_size=square_hd" alt="Ezcel 插件界面" width="400">
-</p>
-
 Ezcel 是一个功能强大的 Excel 插件，为 Excel 用户提供 AI 能力，通过简单的函数调用即可访问先进的 AI 模型。
-
-## 可视化介绍
-
-### 插件界面
-
-Ezcel 插件在 Excel 功能区中添加了专门的标签页，提供了直观的操作界面：
-
-<p align="center">
-  <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Excel%20ribbon%20with%20Ezcel%20tab%20showing%20settings%20button%20and%20AI%20functions%2C%20professional%20office%20UI&image_size=landscape_16_9" alt="Ezcel 功能区" width="600">
-</p>
-
-### 函数使用示例
-
-使用 Ezcel 函数非常简单，只需在 Excel 单元格中输入函数并提供参数：
-
-<p align="center">
-  <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Excel%20cell%20with%20AI%20function%20formula%20PROMPT%20analyzing%20data%20range%2C%20professional%20spreadsheet%20UI&image_size=landscape_16_9" alt="Ezcel 函数使用" width="600">
-</p>
-
-### 结果展示
-
-Ezcel 支持多种返回格式，包括单值、行溢出、列溢出和矩阵溢出：
-
-<p align="center">
-  <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Excel%20spreadsheet%20showing%20AI%20generated%20results%20in%20different%20formats%20including%20single%20value%2C%20row%20spill%2C%20column%20spill%20and%20matrix%20spill%2C%20professional%20data%20visualization&image_size=landscape_16_9" alt="Ezcel 结果展示" width="600">
-</p>
 
 ## 功能特点
 
