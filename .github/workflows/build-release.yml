@@ -14,57 +14,20 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v4
       
-    - name: Setup .NET
-      uses: actions/setup-dotnet@v4
-      with:
-        dotnet-version: '9.0.x'
-        
-    - name: Restore dependencies
-      run: dotnet restore Ezcel.sln
-      
-    - name: Build
-      run: dotnet build Ezcel.sln --configuration Release --no-restore
-      
     - name: Create release package
       run: |
-        Write-Host "当前目录: $pwd"
-        Write-Host "列出当前目录文件:"
-        Get-ChildItem -Path "." -Recurse | Select-Object -Property FullName | Sort-Object FullName
-        
         mkdir -p release
         
-        # 检查构建输出目录
-        $buildOutput = "src/Ezcel.AddIn/bin/Release/net9.0-windows"
-        Write-Host "检查构建输出目录: $buildOutput"
+        # 复制所有必要的文件
+        $files = @(
+            "appsettings.json", 
+            "README.md", 
+            "INSTALL.md", 
+            "LICENSE", 
+            "install.ps1",
+            "Ezcel.sln"
+        )
         
-        if (Test-Path $buildOutput) {
-            Write-Host "构建输出目录存在，列出内容:"
-            Get-ChildItem -Path $buildOutput -Recurse | Select-Object -Property FullName
-            Copy-Item -Path "$buildOutput/*" -Destination "release/" -Recurse
-            Write-Host "已复制构建输出"
-        } else {
-            # 尝试查找其他可能的构建输出目录
-            Write-Host "构建输出目录不存在，查找其他可能的目录:"
-            $possiblePaths = @(
-                "src/Ezcel.AddIn/bin/Release",
-                "src/Ezcel.AddIn/bin",
-                "bin/Release/net9.0-windows",
-                "bin/Release"
-            )
-            
-            foreach ($path in $possiblePaths) {
-                if (Test-Path $path) {
-                    Write-Host "找到目录: $path"
-                    Get-ChildItem -Path $path -Recurse | Select-Object -Property FullName
-                    Copy-Item -Path "$path/*" -Destination "release/" -Recurse
-                    Write-Host "已复制该目录内容"
-                    break
-                }
-            }
-        }
-        
-        # 复制配置和文档文件
-        $files = @("appsettings.json", "README.md", "INSTALL.md", "LICENSE", "install.ps1")
         foreach ($file in $files) {
             if (Test-Path $file) {
                 Copy-Item -Path $file -Destination "release/"
@@ -72,6 +35,22 @@ jobs:
             } else {
                 Write-Host "警告：$file 不存在"
             }
+        }
+        
+        # 复制源代码目录
+        if (Test-Path "src") {
+            Copy-Item -Path "src" -Destination "release/" -Recurse
+            Write-Host "已复制 src 目录"
+        } else {
+            Write-Host "警告：src 目录不存在"
+        }
+        
+        # 复制测试目录
+        if (Test-Path "tests") {
+            Copy-Item -Path "tests" -Destination "release/" -Recurse
+            Write-Host "已复制 tests 目录"
+        } else {
+            Write-Host "警告：tests 目录不存在"
         }
         
         # 列出发布目录内容
