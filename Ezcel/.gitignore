@@ -1,0 +1,32 @@
+# Build results
+[Dd]ebug/
+[Rr]elease/
+bin/
+obj/
+
+# Visual Studio
+.vs/
+*.user
+*.userosscache
+*.sln.docstates
+
+# Excel-DNA
+*.xll
+*.dna
+*.config
+
+# NuGet
+*.nupkg
+*.snupkg
+
+# Logs
+*.log
+
+# IDE
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
